@@ -7,9 +7,9 @@ import java.util.LinkedHashSet;
 
 public class Solutions {
     public static void main(String[] args) {
-        System.out.println("Hello");
         Solutions object = new Solutions();
         System.out.println( object.printFibboTillN(1,1,100, null));
+        System.out.println(object.frequencyCounter("quick fox lazy dog quick donkey fire fox"));
     }
 
 
@@ -38,15 +38,18 @@ public class Solutions {
     }
 
     private HashMap frequencyCounter(String s){
-        HashMap map = new HashMap();
+        HashMap<String, Integer> map = new HashMap();
         String[] words = s.split( "\\W+");
         for(String word : words){
             if(map.containsKey(word)){
-
-            }
-
-
+                if(map.get(word) != null)
+                    map.put(word, map.get(word).intValue() + 1);
+                else
+                    map.put(word, 1);
+            }else
+                map.put(word, 1);
         }
+        return map;
     }
 }
 
